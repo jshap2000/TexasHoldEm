@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+        var me = "";
+        var socketio = io.connect();
+        socketio.on("add_player_to_client", function (data) {
+            var players = data['players'];
+            document.getElementById("in").innerHTML = "<h2> Who's In</h2>";
+            for (var i = 0; i < players.length; i++) {
+                document.getElementById("in").appendChild(document.createElement("h3"));
+                document.getElementById("in").appendChild(document.createTextNode(players[i]));
+            }
+            console.log(me);
+            if (me==data['leader']) {
+                document.getElementById("start_game").hidden = "";
+                console.log("start!");
+            }
+        });
+
+        function addPlayer() {
+            var username = document.getElementById("username").value;
+            document.getElementById("username").value = "";
+            document.getElementById("join").hidden = "hidden";
+            me = username;
+            socketio.emit("add_player_to_server", { username: username });
+        }</script>
+</head>
+<body>
+    <div id="start_screen">
+        <h1> Quiplash </h1>
+        <div id="in">
+            <h2> Who's In</h2>
+            <button id="start_game" hidden="hidden" onclick="start()">Start Game</button>
+        </div>
+        <div id="join">
+            <input type="text" id="username" />
+            <button onclick="addPlayer()">join game</button>
+        </div>
+    </div>
+</body>
+</html>

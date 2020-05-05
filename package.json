@@ -1,0 +1,22 @@
+{
+  "name": "texasholdem",
+  "version": "1.0.0",
+  "description": "Play poker online w/friends",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jshap2000/TexasHoldEm.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jshap2000/TexasHoldEm/issues"
+  },
+  "homepage": "https://github.com/jshap2000/TexasHoldEm#readme",
+  "dependencies": {
+    "socket.io": "^2.3.0"
+  }
+}
